@@ -1,0 +1,52 @@
+using System;
+namespace practica_2
+{
+        class Program
+        {
+            public static void Main(string[] args)
+        {
+        int hora = 00;
+        int minuto = 00;
+        int segundo = 00;
+        int aux;
+        
+        
+        Console.WriteLine("MENU \n1)Reloj\n2)Cronometro\n");
+       string opc = Console.ReadLine();
+        
+        switch(opc){
+                case "1":
+       		    Console.Clear();
+                Console.WriteLine("Esta opcion muestra la Hora:\n");
+                Console.WriteLine(DateTime.Now.ToString("hh:mm")); 
+                System.Threading.Thread.Sleep(10000);
+                break;
+                case "2":
+                while (true){           
+            	Console.Clear();
+                Console.WriteLine("Esta opcion muestra la Hora:\n");
+                Console.WriteLine("Cronometro  {0}:{1}:{2}", hora, minuto, segundo);
+                aux = Environment.TickCount;
+                while (Environment.TickCount <= aux + 1000) ;
+                segundo = segundo + 1;
+                
+                if (segundo == 60){
+                	segundo = 0;
+                    minuto = minuto + 1;
+                if (minuto == 60){
+                    minuto = 0;
+                    hora = hora + 1;
+                if (hora == 24){
+                    hora = 0;
+                    }
+                }
+            }
+       }
+       break;
+       default:  Console.WriteLine("FALSE");
+       break;
+                        
+       }
+      }
+   }
+}
